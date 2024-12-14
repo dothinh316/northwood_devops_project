@@ -53,7 +53,7 @@ This doc provides workflow to deploy a K3s Cluster on a Multipass Instance with 
    - Support for AMD64 was omitted due to project complexity.
 
 ---
-## **Make Celery Container Deployment **
+## **Make Celery Container Deployment**
 Python code for Flask app and Celery worker lives in [make_celery](https://github.com/dothinh316/make_celery). Please follow README.md instructions for build and deployment.  Currently there is a Github Actions workflow there to automate the build process from CI based on commit to `main` or a version tag
 
 ## **Design**
