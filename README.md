@@ -77,9 +77,9 @@ example:
 ```
 *  `sudo systemctl daemon-reload`
 *  `sudo systemctl restart k3s`
-* scp ubuntu@<VM's IP>:/etc/rancher/k3s/k3s.yaml ~/k3s.yaml
-* `vim ~/k3s.yaml `
-**FIND AND REPLACE VM's IP**
+*  `scp ubuntu@<VM's IP>:/etc/rancher/k3s/k3s.yaml ~/k3s.yaml`
+*  `vim ~/k3s.yaml `
+* FIND AND REPLACE VM's IP
 ```bash
     clusters:
     - cluster:
