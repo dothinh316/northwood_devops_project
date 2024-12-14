@@ -1,5 +1,4 @@
 # northwood_devops_project
-![K3 Architecture Design](k3_architecture.pdf "arch")
 ![K3 Architecture Design](k3s_architecture.png "K3 Architecture Design")
 ## **Overview**
 This doc provides workflow to deploy a K3s Cluster on a Multipass Instance with infrastructure components and a Flask app with Celery Workers.  This workflow will only work if you are on a ARM64 architecture.  I tried to develop for AMD64 but that got too complex with the time I had.
