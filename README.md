@@ -95,17 +95,19 @@ example:
 * `helm repo update`
 * `kubectl create namespace grafana`
 * `helm install grafana grafana/grafana --namespace grafana -f grafana-values.yaml`
-* `Connect to Grafana from your local machine http://<MULTIPASS_IP>:32000`
+* Connect to Grafana from your local machine http://<MULTIPASS_IP>:32000
 ### Prometheus
 * `helm repo add prometheus-community https://prometheus-community.github.io/helm-charts`
 *  `helm repo update`
 * `kubectl create namespace prometheus`
 * `helm install prometheus prometheus-community/prometheus --namespace prometheus -f prometheus-values.yaml`
+* Connect to prometheus from your local machine http://<MULTIPASS_IP>:32001
 ### Redis
 * `helm repo add bitnami https://charts.bitnami.com/bitnami`
 *  `helm repo update`
 * `kubectl create namespace redis`
 * `helm install redis bitnami/redis --namespace redis -f redis-values.yaml`
+* Connect to redis from your local machine http://<MULTIPASS_IP>:32003
 ### Nginx
 * `helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx`
 * `helm repo update`
@@ -114,6 +116,7 @@ example:
 ### Celery
 * `cd celery_helm`
 * `helm install celery -f values.yaml .`
+* Connect to flask app / celery worker from your local machine http://<MULTIPASS_IP>:30080/ or http://<MULTIPASS_IP>:30080/long_task
 4. Dashboards for Deployments - Follow [this](https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/import-dashboards/) to add pre build dashboards
 * https://grafana.com/grafana/dashboards/15282-k8s-rke-cluster-monitoring/
 * https://grafana.com/grafana/dashboards/17508-celery-tasks-by-task/
