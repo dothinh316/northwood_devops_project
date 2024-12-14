@@ -90,30 +90,30 @@ example:
 3. Deployments - Deploy Observability Pipeline with Helm From Local Machine
 * Clone [deployments](https://github.com/dothinh316/deployments)
 * cd into deployments repo and install required helm charts with the values file provided
-* Grafana
-    * `helm repo add grafana https://grafana.github.io/helm-charts`
-        `helm repo update`
-    * `kubectl create namespace grafana`
-    * `helm install grafana grafana/grafana --namespace grafana -f grafana-values.yaml`
-    * `Connect to Grafana from your local machine http://<MULTIPASS_IP>:32000`
-* Prometheus
-    * `helm repo add prometheus-community https://prometheus-community.github.io/helm-charts`
-        `helm repo update`
-    * `kubectl create namespace prometheus`
-    * `helm install prometheus prometheus-community/prometheus --namespace prometheus -f prometheus-values.yaml`
-* Redis
-    * `helm repo add bitnami https://charts.bitnami.com/bitnami`
-        `helm repo update`
-    * `kubectl create namespace redis`
-    * `helm install redis bitnami/redis --namespace redis -f redis-values.yaml`
-* Nginx
-    * `helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx`
-    * `helm repo update`
-    * `kubectl create namespace ingress-nginx`
-    * `helm install nginx-ingress ingress-nginx/ingress-nginx`
-* Celery
-    * `cd celery_helm`
-    * `helm install celery -f values.yaml .`
+### Grafana
+* `helm repo add grafana https://grafana.github.io/helm-charts`
+* `helm repo update`
+* `kubectl create namespace grafana`
+* `helm install grafana grafana/grafana --namespace grafana -f grafana-values.yaml`
+* `Connect to Grafana from your local machine http://<MULTIPASS_IP>:32000`
+### Prometheus
+* `helm repo add prometheus-community https://prometheus-community.github.io/helm-charts`
+*  `helm repo update`
+* `kubectl create namespace prometheus`
+* `helm install prometheus prometheus-community/prometheus --namespace prometheus -f prometheus-values.yaml`
+### Redis
+* `helm repo add bitnami https://charts.bitnami.com/bitnami`
+*  `helm repo update`
+* `kubectl create namespace redis`
+* `helm install redis bitnami/redis --namespace redis -f redis-values.yaml`
+### Nginx
+* `helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx`
+* `helm repo update`
+* `kubectl create namespace ingress-nginx`
+* `helm install nginx-ingress ingress-nginx/ingress-nginx`
+### Celery
+* `cd celery_helm`
+* `helm install celery -f values.yaml .`
 4. Dashboards for Deployments - Follow [this](https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/import-dashboards/) to add pre build dashboards
 * https://grafana.com/grafana/dashboards/15282-k8s-rke-cluster-monitoring/
 * https://grafana.com/grafana/dashboards/17508-celery-tasks-by-task/
