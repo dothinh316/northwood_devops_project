@@ -67,49 +67,53 @@ It is intended when a user hits `http://<Node-IP>:30080/long_task`, this will ad
 1. Install Mutipass Instance - [multipass-k3s-setup](https://github.com/dothinh316/multipass-k3s-setup)
 2. K3s deploys and binds the cluster to localhost only so you can only access the cluster from your Multipass VM.  Lets update the configs
 so we expose the Cluster API through Multipass VM IP
-    a. vim /etc/systemd/system/k3s.service
+    a. `vim /etc/systemd/system/k3s.service`
     b. Find the line with ExecStart and add the --bind-address and --advertise-address flags:
-        example: ExecStart=/usr/local/bin/k3s server \
+        example: ```bash
+                    ExecStart=/usr/local/bin/k3s server \
                     --bind-address=0.0.0.0 \
                     --advertise-address=192.168.64.2 \
                     --disable=traefik
-    c.  sudo systemctl daemon-reload
-        sudo systemctl restart k3s
+                ```
+    c.  `sudo systemctl daemon-reload`
+        `sudo systemctl restart k3s`
     d. scp ubuntu@<VM's IP>:/etc/rancher/k3s/k3s.yaml ~/k3s.yaml
-    e. vim ~/k3s.yaml 
+    e. `vim ~/k3s.yaml `
         i. FIND AND REPLACE VM's IP
-                clusters:
+                ```bash
+                  clusters:
                     - cluster:
                         server: https://<VM's IP>:6443
                         certificate-authority-data: <...>
-    f. export KUBECONFIG=~/k3s.yaml
+                ```
+    f. `export KUBECONFIG=~/k3s.yaml`
 3. Deployments - Deploy Observability Pipeline with Helm From Local Machine
     a. Clone [deployments](https://github.com/dothinh316/deployments)
     b. cd into deployments repo and install required helm charts with the values file provided
     c. Grafana
-        * helm repo add grafana https://grafana.github.io/helm-charts
-           helm repo update
-        * kubectl create namespace grafana
-        * helm install grafana grafana/grafana --namespace grafana -f grafana-values.yaml
-        * Connect to Grafana from your local machine http://<MULTIPASS_IP>:32000
+        * `helm repo add grafana https://grafana.github.io/helm-charts`
+           `helm repo update`
+        * `kubectl create namespace grafana`
+        * `helm install grafana grafana/grafana --namespace grafana -f grafana-values.yaml`
+        * `Connect to Grafana from your local machine http://<MULTIPASS_IP>:32000`
     d. Prometheus
-        * helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
-          helm repo update
-        * kubectl create namespace prometheus
-        * helm install prometheus prometheus-community/prometheus --namespace prometheus -f prometheus-values.yaml
+        * `helm repo add prometheus-community https://prometheus-community.github.io/helm-charts`
+          `helm repo update`
+        * `kubectl create namespace prometheus`
+        * `helm install prometheus prometheus-community/prometheus --namespace prometheus -f prometheus-values.yaml`
     e. Redis
-        * helm repo add bitnami https://charts.bitnami.com/bitnami
-          helm repo update
-        * kubectl create namespace redis
-        * helm install redis bitnami/redis --namespace redis -f redis-values.yaml
+        * `helm repo add bitnami https://charts.bitnami.com/bitnami`
+          `helm repo update`
+        * `kubectl create namespace redis`
+        * `helm install redis bitnami/redis --namespace redis -f redis-values.yaml`
     f. Nginx
-        * helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
-        * helm repo update
-        * kubectl create namespace ingress-nginx
-        * helm install nginx-ingress ingress-nginx/ingress-nginx
+        * `helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx`
+        * `helm repo update`
+        * `kubectl create namespace ingress-nginx`
+        * `helm install nginx-ingress ingress-nginx/ingress-nginx`
     g. Celery
-        * cd celery_helm
-        * helm install celery -f values.yaml .
+        * `cd celery_helm`
+        * `helm install celery -f values.yaml .`
 4. Dashboards for Deployments - Follow [this](https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/import-dashboards/) to add pre build dashboards
     a. https://grafana.com/grafana/dashboards/15282-k8s-rke-cluster-monitoring/
     b. https://grafana.com/grafana/dashboards/17508-celery-tasks-by-task/
