@@ -3,7 +3,7 @@
 ## **Overview**
 This doc provides workflow to deploy a K3s Cluster on a Multipass Instance with infrastructure components and a Flask app with Celery Workers.  This workflow will only work if you are on a ARM64 architecture.  I tried to develop for AMD64 but that got too complex with the time I had.
 
-## **Dashboards **
+## **Dashboards**
 ### **Celery Dashboard**
 ![Celery Dashboard Task Monitoring](celery_dashboard.png "Celery Dashboard Task Monitoring")
 
