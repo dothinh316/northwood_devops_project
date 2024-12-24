@@ -124,7 +124,7 @@ example:
 * `helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx`
 * `helm repo update`
 * `kubectl create namespace ingress-nginx`
-* `helm install nginx-ingress ingress-nginx/ingress-nginx`
+* `helm install nginx-ingress ingress-nginx/ingress-nginx nginx-values.yaml`
 ### Celery
 * `cd celery_helm`
 * `helm install celery -f values.yaml .`
